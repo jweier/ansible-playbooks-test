@@ -1,0 +1,4 @@
+- name: Warm the Controller fact cache
+  hosts: all
+  gather_facts: true
+  tasks: []

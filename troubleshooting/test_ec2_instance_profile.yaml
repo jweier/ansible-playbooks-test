@@ -1,0 +1,19 @@
+---
+- name: Verify AWS credentials via amazon.aws
+  hosts: localhost
+  gather_facts: false
+  vars:
+    # Not strictly required for STS, but harmless if you want it explicit:
+    # aws_region: us-east-1
+  tasks:
+    - name: Get current AWS caller identity
+      amazon.aws.aws_caller_info:
+        # region: "{{ aws_region | default(omit) }}"
+      register: caller
+
+    - name: Show identity
+      ansible.builtin.debug:
+        msg:
+          account: "{{ caller.account }}"
+          arn: "{{ caller.arn }}"
+          user_id: "{{ caller.user_id }}"

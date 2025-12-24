@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+     - name: Message
+       debug:
+          msg: "This is a test: {{ TESTING_VAR }}"

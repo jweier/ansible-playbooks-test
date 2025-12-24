@@ -1,0 +1,9 @@
+---
+- name: RHEL8 Baseline
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Set timezone to America/New_York
+      become: true
+      community.general.timezone:
+        name: America/New_York
